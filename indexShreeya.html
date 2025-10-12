@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Shreeya 💕</title>
+    <link rel="stylesheet" href="styleShreeya.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particle System Background -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Aurora Background -->
+    <div class="aurora">
+        <div class="aurora-layer"></div>
+        <div class="aurora-layer"></div>
+        <div class="aurora-layer"></div>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-heart" data-delay="0">💕</div>
+        <div class="floating-heart" data-delay="2">💖</div>
+        <div class="floating-heart" data-delay="4">💗</div>
+        <div class="floating-star" data-delay="1">⭐</div>
+        <div class="floating-star" data-delay="3">✨</div>
+        <div class="floating-star" data-delay="5">🌟</div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" preload="auto">
+        <source src="ArzKiyaHai.mp3" type="audio/mpeg">
+        <source src="Sahiba.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" onclick="toggleMusic()" title="Click to play music">
+        <div class="equalizer" style="display: none;">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="play-icon" style="display: block;">🎵</div>
+    </button>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Animated Introduction -->
+        <div class="intro-animation" id="introAnimation">
+            <div class="typewriter">
+                <span id="typewriterText"></span>
+                <span class="cursor">|</span>
+            </div>
+        </div>
+
+        <!-- Main Content Card -->
+        <div class="content" id="mainContent">
+            <div class="profile-section">
+                <!-- Beautiful Romantic Avatar -->
+                <div class="avatar-placeholder">
+                    <div class="romantic-avatar">
+                        <div class="heart-center">💖</div>
+                        <div class="floating-petals">
+                            <span class="petal petal-1">🌸</span>
+                            <span class="petal petal-2">🌺</span>
+                            <span class="petal petal-3">🌸</span>
+                            <span class="petal petal-4">🌺</span>
+                            <span class="petal petal-5">🌸</span>
+                            <span class="petal petal-6">🌺</span>
+                        </div>
+                        <div class="sparkle-ring">
+                            <span class="sparkle spark-1">✨</span>
+                            <span class="sparkle spark-2">💫</span>
+                            <span class="sparkle spark-3">⭐</span>
+                            <span class="sparkle spark-4">✨</span>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="animated-title">Hey Beautiful Shreeya ✨</h1>
+            </div>
+            
+            <!-- Interactive Menu Options -->
+            <div class="message-cards">
+                <div class="message-card clickable-card slide-in" data-delay="0.5" onclick="showAboutMe()">
+                    <div class="card-icon">😃</div>
+                    <p>😃Something About me😃</p>
+                    <div class="card-arrow">👉</div>
+                </div>
+                
+                <div class="message-card clickable-card slide-in" data-delay="1" onclick="showAboutYou()">
+                    <div class="card-icon">🌸</div>
+                    <p>🌸 Something About You🌸</p>
+                    <div class="card-arrow">👉</div>
+                </div>
+                
+                <div class="message-card clickable-card slide-in" data-delay="1.5" onclick="showHorrendous()">
+                    <div class="card-icon">😁</div>
+                    <p>😁Wanna hear smthng 'Horrendous'?😁</p>
+                    <div class="card-arrow">👉</div>
+                </div>
+            </div>
+
+            <!-- Back Button (Initially Hidden) -->
+            <div class="back-button-container" id="backButtonContainer" style="display: none;">
+                <button class="back-btn" onclick="goBack()">
+                    <span>← Back to Menu</span>
+                </button>
+            </div>
+
+            <!-- Final Question (Initially Hidden) -->
+            <div class="final-question" id="finalQuestion" style="display: none;">
+                <div class="question-card">
+                    <div class="question-icon">💝</div>
+                    <p>Would you like to go on a magical date with me?</p>
+                </div>
+                
+                <div class="interactive-buttons">
+                    <button class="yes-btn magical-btn" onclick="handleYes()">
+                        <span class="btn-text">Yes! 💖</span>
+                        <div class="btn-particles"></div>
+                    </button>
+                    <button class="no-btn playful-btn" onclick="handleNo()">
+                        <span class="btn-text">Maybe Later</span>
+                        <div class="btn-shake"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Display Modal -->
+    <div id="contentModal" class="modal">
+        <div class="modal-content content-modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Title</h2>
+                <button class="close-btn" onclick="closeContentModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalContent">Content goes here</div>
+            </div>
+            <div class="modal-footer">
+                <button class="continue-btn" onclick="showFinalQuestion()">
+                    Continue to Final Question 💕
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fireworks Container -->
+    <div id="fireworksContainer"></div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content magical-modal">
+            <h2 class="success-title">🎉 Amazing! 🎉</h2>
+            <div class="success-message">
+                <p class="pulse-text">You just made me the happiest person alive!</p>
+                <p class="glow-text">I'll plan something absolutely magical! ✨</p>
+                <div class="countdown-timer">
+                    <span>Get ready for the best date ever in...</span>
+                    <div class="timer-display">∞ moments</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scriptShreeya.js"></script>
+</body>
+</html>
